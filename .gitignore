@@ -73,3 +73,8 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]treamingAssets/aa/*
 
 **/PackageCache/**
+
+# Unity WebGL Publish Plugin
+WebGL\ Builds*/
+connectwebgl.zip
+webgl_sharing

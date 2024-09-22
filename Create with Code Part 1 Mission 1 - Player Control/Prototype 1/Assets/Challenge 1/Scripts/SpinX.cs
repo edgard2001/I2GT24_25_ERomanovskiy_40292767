@@ -9,6 +9,6 @@ public class SpinX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.fwd, RotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward, RotateSpeed * Time.deltaTime);
     }
 }

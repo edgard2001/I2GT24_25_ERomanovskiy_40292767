@@ -1336,6 +1336,7 @@ GameObject:
   - component: {fileID: 6587077232014292061}
   - component: {fileID: 3772497455929111740}
   - component: {fileID: 5529293599714741869}
+  - component: {fileID: -1916822501801081710}
   m_Layer: 0
   m_Name: Animal_Cow_White
   m_TagString: Untagged
@@ -1394,6 +1395,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
+--- !u!65 &-1916822501801081710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830283931598307043}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 32.306404, z: 53.541256}
+  m_Center: {x: 0, y: 15.653196, z: -2.359957}
 --- !u!1 &6858821294813506675
 GameObject:
   m_ObjectHideFlags: 0

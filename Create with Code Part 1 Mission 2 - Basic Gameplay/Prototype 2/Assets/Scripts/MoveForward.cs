@@ -21,6 +21,14 @@ public class MoveForward : MonoBehaviour
         if (transform.position.z > 35)
             Destroy(gameObject);
         else if (transform.position.z < -15)
+        {
+            print("GAME OVER!");
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
 }

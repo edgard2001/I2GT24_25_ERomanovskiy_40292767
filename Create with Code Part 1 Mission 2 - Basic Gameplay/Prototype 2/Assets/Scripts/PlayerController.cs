@@ -17,5 +17,8 @@ public class PlayerController : MonoBehaviour
 
         if (Mathf.Abs(transform.position.x) > LimitX)
             transform.position -= (transform.position.x - Mathf.Sign(transform.position.x) * LimitX) * transform.right;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            Instantiate(Food, transform.position, Food.transform.rotation);
     }
 }

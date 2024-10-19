@@ -78,3 +78,6 @@ crashlytics-build.properties
 WebGL\ Builds*/
 connectwebgl.zip
 webgl_sharing
+
+# Rider IDE
+.idea/

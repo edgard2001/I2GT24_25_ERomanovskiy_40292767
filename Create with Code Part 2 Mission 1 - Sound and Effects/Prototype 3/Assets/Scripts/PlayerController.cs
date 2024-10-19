@@ -12,12 +12,22 @@ public class PlayerController : MonoBehaviour
     public bool gameOver;
 
     private Animator _animator;
+    public ParticleSystem explosion;
+    public ParticleSystem trail;
+
+    public AudioClip jumpSound;
+    public AudioClip crashSound;
+    private AudioSource _audioSource;
 
     void Start()
     {
         _playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
+        
         _animator = GetComponent<Animator>();
+        trail.Play();
+        
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,6 +38,8 @@ public class PlayerController : MonoBehaviour
             _isOnGround = false;
             _animator.SetTrigger("Jump_trig");
             _animator.SetBool("grounded", false);
+            trail.Stop();
+            _audioSource.PlayOneShot(jumpSound, 1.0f);
         }
     }
 
@@ -37,12 +49,16 @@ public class PlayerController : MonoBehaviour
         {
             _isOnGround = true;
             _animator.SetBool("grounded", true);
+            trail.Play();
         }
         else
         {
             gameOver = true; 
             Debug.Log("Game Over!");
             _animator.SetBool("Death_b", true);
+            explosion.Play();
+            trail.Stop();
+            _audioSource.PlayOneShot(crashSound, 1.0f);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Player
             _health = GetComponent<Health>();
             _health.OnDeath += () => Respawn();
             
-            Physics.gravity *= gravityMultiplier;
+            Physics.gravity = Vector3.down * (9.81f * gravityMultiplier);
             
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

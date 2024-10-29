@@ -1,1 +1,0 @@
-Create your personal project in this folder, and then commit it as you are working on it

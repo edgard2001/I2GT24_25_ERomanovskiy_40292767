@@ -1,24 +1,48 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float Speed = 10.0f;
-    public float LimitX = 20.0f;
-    public GameObject Food;
+    private float horizontalInput;
+    private float speed = 20.0f;
+    private float xRange = 20;
 
-    private float _horizontalInput;
 
+    // Update is called once per frame
     void Update()
     {
-        _horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * _horizontalInput * Time.deltaTime * Speed);
+        // Check for left and right bounds
+        if (transform.position.x < -xRange)
+        {
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        }
 
-        if (Mathf.Abs(transform.position.x) > LimitX)
-            transform.position -= (transform.position.x - Mathf.Sign(transform.position.x) * LimitX) * transform.right;
+        if (transform.position.x > xRange)
+        {
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
+
+        // Player movement left to right
+        horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+
 
         if (Input.GetKeyDown(KeyCode.Space))
-            Instantiate(Food, transform.position, Food.transform.rotation);
+        {
+            // No longer necessary to Instantiate prefabs
+            // Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+
+            // Get an object object from the pool
+            GameObject pooledProjectile = ObjectPooler.SharedInstance.GetPooledObject();
+            if (pooledProjectile != null)
+            {
+                pooledProjectile.SetActive(true); // activate it
+                pooledProjectile.transform.position = transform.position; // position it at player
+            }
+        }
+
+
+
     }
 }

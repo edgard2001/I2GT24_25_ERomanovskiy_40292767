@@ -14,19 +14,19 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
+  - Crate
+  - Collectible
+  - 
+  - Player
+  - Player Hitbox
+  - 
   - Enemy
+  - Enemy Hitbox
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Weapon
   - 
   - 
   - 

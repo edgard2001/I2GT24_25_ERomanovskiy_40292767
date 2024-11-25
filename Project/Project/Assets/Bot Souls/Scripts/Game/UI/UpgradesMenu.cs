@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Collectible;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UpgradesMenu : MonoBehaviour
 {
@@ -36,8 +37,11 @@ public class UpgradesMenu : MonoBehaviour
     [SerializeField] private AnimationCurve damageCostCurve;
 
     private bool _inMenu;
+    public bool InMenu => _inMenu;
     [SerializeField] private GameObject upgradesUI;
     [SerializeField] private PlayerInventory playerInventory;
+    
+    [SerializeField] private GameObject firstButton;
     
     private void Start()
     {
@@ -45,9 +49,9 @@ public class UpgradesMenu : MonoBehaviour
         staminaLevelText.text = $"Stamina Level: {_staminaLevel}";
         damageLevelText.text = $"Damage Level: {_damageLevel}";
         
-        healthCostText.text = $"Health Cost: {_healthCost}";
-        staminaCostText.text = $"Stamina Cost: {_staminaCost}";
-        damageCostText.text = $"Damage Cost: {_damageCost}";
+        healthCostText.text = $"Upgrade Cost: {_healthCost}";
+        staminaCostText.text = $"Upgrade Cost: {_staminaCost}";
+        damageCostText.text = $"Upgrade Cost: {_damageCost}";
         
         OnHealthLevelChanged?.Invoke(_healthLevel);
         OnStaminaLevelChanged?.Invoke(_staminaLevel);
@@ -62,6 +66,7 @@ public class UpgradesMenu : MonoBehaviour
     {
         if (Input.GetButtonDown("Upgrades"))
         {
+            EventSystem.current.SetSelectedGameObject(firstButton);
             ToggleUpgradesMenu();
         }
     }
@@ -82,7 +87,7 @@ public class UpgradesMenu : MonoBehaviour
         _healthLevel++;
         _healthCost = (int)(_healthCost * (1 + healthCostCurve.Evaluate((float)_healthLevel / healthLevelMax)));
         healthLevelText.text = $"Health Level: {_healthLevel}";
-        healthCostText.text = $"Health Cost: {_healthCost}";
+        healthCostText.text = $"Upgrade Cost: {_healthCost}";
         OnHealthLevelChanged?.Invoke(_healthLevel);
     }
     
@@ -94,7 +99,7 @@ public class UpgradesMenu : MonoBehaviour
         _staminaLevel++;
         _staminaCost = (int)(_staminaCost * (1 + staminaCostCurve.Evaluate((float)_staminaLevel / staminaLevelMax)));
         staminaLevelText.text = $"Stamina Level: {_staminaLevel}";
-        staminaCostText.text = $"Stamina Cost: {_staminaCost}";
+        staminaCostText.text = $"Upgrade Cost: {_staminaCost}";
         OnStaminaLevelChanged?.Invoke(_staminaLevel);
     }
     
@@ -106,7 +111,7 @@ public class UpgradesMenu : MonoBehaviour
         _damageLevel++;
         _damageCost = (int)(_damageCost * (1 + damageCostCurve.Evaluate((float)_damageLevel / damageLevelMax)));
         damageLevelText.text = $"Damage Level: {_damageLevel}";
-        damageCostText.text = $"Damage Cost: {_damageCost}";
+        damageCostText.text = $"Upgrade Cost: {_damageCost}";
         OnDamageLevelChanged?.Invoke(_damageLevel);
     }
 }

@@ -324,8 +324,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Controls\n--------------\n\nMove - WASD / Left Stick \nLook - Mouse /
     Right  Stick\n\nJump - Space / A Button\nSprint - Left Shift / Left Stick Press
-    \n\nAttack - Left Click / Right Trigger\nBlock - Right Click / Left Trigger\n\nUpgrades
-    Menu - Tab / Back Button\n\n\n"
+    \n\nAttack - Left Click / Right Trigger\nBlock - Right Click / Left Trigger\n\nToggle
+    Upgrades Menu - Tab / Back Button\nConfirm - Space / A Button\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 3802846999043392280}
   - component: {fileID: 2555336661052185849}
   m_Layer: 5
-  m_Name: Controls Text (1)
+  m_Name: Acknowledgement Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

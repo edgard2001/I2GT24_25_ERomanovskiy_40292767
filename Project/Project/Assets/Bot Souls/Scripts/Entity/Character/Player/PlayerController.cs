@@ -38,6 +38,8 @@ namespace Player
         private Animator _animator;
         private CharacterAttack _attackBehaviour;
 
+        private UpgradesMenu _upgradesMenu;
+        
         private void Start()
         {
             _platforming = GetComponentInChildren<PlatformingObject>();
@@ -61,6 +63,8 @@ namespace Player
                 
             _animator = GetComponentInChildren<Animator>();
             _attackBehaviour = GetComponentInChildren<CharacterAttack>(); 
+            
+            _upgradesMenu = GetComponentInChildren<UpgradesMenu>();
             
             Physics.gravity = Vector3.down * (9.81f * gravityMultiplier);
         }
@@ -87,10 +91,16 @@ namespace Player
             Vector2 inputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             inputVector = ClampInput(inputVector);
 
+            if (_upgradesMenu.InMenu)
+                inputVector = Vector2.zero;
+            
             if (_grounded)
                 _speed = inputVector.magnitude * maxSpeed * (_sprinting ? sprintMultiplier : 1);
             CalculateMovementDirection(inputVector);
 
+            if (_upgradesMenu.InMenu)
+                return;
+            
             if (_grounded && Input.GetButtonDown("Jump") && _stamina.UseStamina(jumpStaminaConsumption))
             {
                 _jumping = true;

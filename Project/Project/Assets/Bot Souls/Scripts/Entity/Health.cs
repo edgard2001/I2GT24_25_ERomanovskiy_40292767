@@ -27,6 +27,15 @@ public class Health : MonoBehaviour
     private float _damageIndicatorCatchupTime;
     private Vector3 _previousDamageIndicatorScale;
     
+    [SerializeField] private UpgradesMenu upgradesMenu;
+    [SerializeField] private AnimationCurve healthPerLevel;
+    
+    private void Awake()
+    {
+        if (upgradesMenu != null && healthPerLevel != null)
+            upgradesMenu.OnHealthLevelChanged += level => healthMax += 10 * healthPerLevel.Evaluate(level);
+    }
+
     private void Start()
     {
         _attackBehaviour = GetComponent<CharacterAttack>();
@@ -59,10 +68,10 @@ public class Health : MonoBehaviour
         UpdateHealthBar();
     }
 
-    public void TakeDamage(float damage)
+    public bool TakeDamage(float damage)
     {
-        if (damage <= 0) return;
-        if (_health <= 0) return;
+        if (damage <= 0) return false;
+        if (_health <= 0) return false;
         
         Damaged();
         
@@ -79,6 +88,8 @@ public class Health : MonoBehaviour
             Died();
             Hide();
         }
+
+        return _health > 0;
     }
     
     private void Hide()

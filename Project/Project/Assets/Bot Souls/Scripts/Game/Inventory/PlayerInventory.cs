@@ -29,8 +29,10 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void AddComponent(CollectibleType type, int amount)
+    public bool AddComponent(CollectibleType type, int amount)
     {
+        if (_targetComponentCounts[(int)type] + amount < 0) return false;
+        
         if (Mathf.Abs(amount) > 1)
         {
             _previousComponentCounts[(int)type] = _componentCounts[(int)type];
@@ -43,5 +45,7 @@ public class PlayerInventory : MonoBehaviour
         }
         
         _targetComponentCounts[(int)type] += amount;
+
+        return true;
     }
 }

@@ -19,17 +19,25 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] private LayerMask mask;
 
     public event Action OnAttackParried;
+    public event Action OnEnemyKilled;
     
     private AudioSource _audioSource;
     private Collider _collider;
     private Transform _colliderTransform;
 
     private bool _attacking;
-    private Vector3 _lastPosition;
-    private Vector3 _lastDirection;
     
     private List<Transform> _transformsHit;
     [SerializeField] private int maxEnemiesHitCount = 3;
+    
+    [SerializeField] private UpgradesMenu upgradesMenu;
+    [SerializeField] private AnimationCurve damagePerLevel;
+    
+    private void Awake()
+    {
+        if (upgradesMenu != null && damagePerLevel != null)
+            upgradesMenu.OnDamageLevelChanged += level => damage += damagePerLevel.Evaluate(level);
+    }
     
     private void Start()
     {
@@ -57,8 +65,6 @@ public class MeleeWeapon : MonoBehaviour
         if (!_attacking) return;
         
         TraceHit(0.15f, 1.25f);
-        _lastPosition = _collider.bounds.center;
-        _lastDirection = _colliderTransform.up;
     }
 
     private void TraceHit(float offset, float length)
@@ -74,8 +80,6 @@ public class MeleeWeapon : MonoBehaviour
         Debug.DrawLine(origin1, origin1 + _colliderTransform.up * length, Color.red, 0.1f);
         Debug.DrawLine(origin2, origin2 + _colliderTransform.up * length, Color.red, 0.1f);
         Debug.DrawLine(origin3, origin3 + _colliderTransform.up * length, Color.red, 0.1f);
-        
-        
         
         if (hits1.Length + hits2.Length + hits3.Length == 0) return;
 
@@ -121,7 +125,7 @@ public class MeleeWeapon : MonoBehaviour
         }
         else if (!characterAttack.AttemptBlock())
         {
-            health.TakeDamage(damage);
+            if (health.TakeDamage(damage)) OnEnemyKilled?.Invoke();
             HitCharacter(hit);
         }
         else

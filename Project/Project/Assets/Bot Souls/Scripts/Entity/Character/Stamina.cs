@@ -24,6 +24,15 @@ public class Stamina : MonoBehaviour
     private float _consumptionIndicatorCatchupTime;
     private Vector3 _previousConsumptionIndicatorScale;
     
+    [SerializeField] private UpgradesMenu upgradesMenu;
+    [SerializeField] private AnimationCurve staminaPerLevel;
+    
+    private void Awake()
+    {
+        if (upgradesMenu != null && staminaPerLevel != null)
+            upgradesMenu.OnStaminaLevelChanged += level => staminaMax += 10 * staminaPerLevel.Evaluate(level);
+    }
+    
     private void Start()
     {
         _stamina = staminaMax;

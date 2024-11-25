@@ -213,6 +213,98 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHUD
       objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 3753496582770392683}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: healthCostCurve.m_Curve.Array.data[0].time
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: damageCostCurve.m_Curve.Array.data[0].value
+      value: 0.09996591
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: healthCostCurve.m_Curve.Array.data[0].value
+      value: 0.09996591
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: staminaCostCurve.m_Curve.Array.data[0].value
+      value: 0.09996591
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: damageCostCurve.m_Curve.Array.data[0].inSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: damageCostCurve.m_Curve.Array.data[1].inSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: healthCostCurve.m_Curve.Array.data[0].inSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: healthCostCurve.m_Curve.Array.data[1].inSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: damageCostCurve.m_Curve.Array.data[0].outSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: damageCostCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: damageCostCurve.m_Curve.Array.data[1].outSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: healthCostCurve.m_Curve.Array.data[0].outSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: healthCostCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: healthCostCurve.m_Curve.Array.data[1].outSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: staminaCostCurve.m_Curve.Array.data[0].inSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: staminaCostCurve.m_Curve.Array.data[1].inSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: damageCostCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: healthCostCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: staminaCostCurve.m_Curve.Array.data[0].outSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: staminaCostCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: staminaCostCurve.m_Curve.Array.data[1].outSlope
+      value: 0.90003407
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+      propertyPath: staminaCostCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -249,6 +341,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8412342603758424398, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
   m_PrefabInstance: {fileID: 1260539073936541156}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7937250164233353150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9176246296258212442, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
+  m_PrefabInstance: {fileID: 1260539073936541156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d21abe3da5e994581a21d0a37b789b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8493009138335292526 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7251762196464785802, guid: eaaf1393abb1e7a48998b5123970f383, type: 3}
@@ -515,9 +618,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8493009138335292526}
     - target: {fileID: 6478785490310993951, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: upgradesMenu
+      value: 
+      objectReference: {fileID: 7937250164233353150}
+    - target: {fileID: 6478785490310993951, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
       propertyPath: damageIndicatorBar
       value: 
       objectReference: {fileID: 7332124750436308138}
+    - target: {fileID: 6478785490310993951, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: healthPerLevel.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478785490310993951, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: healthPerLevel.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478785490310993951, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: healthPerLevel.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478785490310993951, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: healthPerLevel.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478785490310993951, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: healthPerLevel.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478785490310993951, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: healthPerLevel.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 6606377557952957454, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -535,9 +666,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6217066173493482958}
     - target: {fileID: 7167875307443773428, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: upgradesMenu
+      value: 
+      objectReference: {fileID: 7937250164233353150}
+    - target: {fileID: 7167875307443773428, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
       propertyPath: consumptionIndicatorBar
       value: 
       objectReference: {fileID: 5069574277454961930}
+    - target: {fileID: 7167875307443773428, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: staminaPerLevel.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167875307443773428, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: staminaPerLevel.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167875307443773428, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: staminaPerLevel.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167875307443773428, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: staminaPerLevel.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167875307443773428, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: staminaPerLevel.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167875307443773428, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: staminaPerLevel.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 7219249909842098369, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -609,6 +768,50 @@ PrefabInstance:
     - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
       propertyPath: tagToDamage
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: upgradesMenu
+      value: 
+      objectReference: {fileID: 7937250164233353150}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: damagePerLevel.m_Curve.Array.data[1].tangentMode
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 8360491378798345700, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
       propertyPath: m_Layer

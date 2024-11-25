@@ -61,7 +61,7 @@ public class UpgradesMenu : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetButtonDown("Upgrades"))
         {
             ToggleUpgradesMenu();
         }

@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    public static GameManager Instance => _instance;
+    
+    private MusicManager _musicManager;
     
     private Checkpoint _checkpoint;
     private Vector3 _checkpointPosition;
@@ -28,7 +31,12 @@ public class GameManager : MonoBehaviour
 
         _currentGameplayScene = 1;
     }
-    
+
+    private void Start()
+    {
+        _musicManager = MusicManager.Instance;
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         GameObject player = GameObject.Find("Player");
@@ -36,19 +44,10 @@ public class GameManager : MonoBehaviour
         _checkpoint = null;
     }
 
-    public static GameManager GetInstance()
-    {
-        return _instance;
-    }
-
     public void RestartLevel()
     {
         SceneManager.LoadScene(_currentGameplayScene);
-    }
-
-    public void ExitToMainMenu()
-    {
-        SceneManager.LoadScene(0);
+        _musicManager.PlayMusic(MusicManager.MusicType.Ambient, 0);
     }
     
     public void SetCheckpoint(Checkpoint checkpoint)

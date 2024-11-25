@@ -11,7 +11,7 @@ public class Checkpoint : MonoBehaviour
     
     private void Start()
     {
-        _gameManager = GameManager.GetInstance();
+        _gameManager = GameManager.Instance;
         hologram.SetActive(false);
     }
 

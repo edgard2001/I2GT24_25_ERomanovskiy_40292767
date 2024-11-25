@@ -6,11 +6,15 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     private GameManager _gameManager;
+    private MusicManager _musicManager;
+    
     private TMP_Text _startPrompt;
     
     void Start()
     {
-        _gameManager = GameManager.GetInstance();
+        _gameManager = GameManager.Instance;
+        _musicManager = MusicManager.Instance;
+        _musicManager.PlayMusic(MusicManager.MusicType.Menu, 0);
     }
 
     void Update()

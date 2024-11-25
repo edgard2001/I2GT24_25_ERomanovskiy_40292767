@@ -48,7 +48,7 @@ namespace Player
             _playerModelTransform = transform.GetChild(0).transform;
             _cameraTransform = UnityEngine.Camera.main.transform;
             
-            _gameManager = GameManager.GetInstance();
+            _gameManager = GameManager.Instance;
             _health = GetComponentInChildren<Health>();
             _health.Died += () =>
             {

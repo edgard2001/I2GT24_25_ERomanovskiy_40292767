@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,10 +13,14 @@ namespace Environment.Platform
         
         [SerializeField] private Vector3 rotationAxis = Vector3.up;
         [SerializeField] private float rotationSpeed = 40;
+        
         private Transform _transform;
         private Vector3 _startPosition;
-    
-        // Start is called before the first frame update
+        private bool _enabled;
+        private float _time;
+        
+        public event Action<bool> OnStatusChanged; 
+        
         void Start()
         {
             _transform = transform;
@@ -25,8 +30,20 @@ namespace Environment.Platform
         // Update is called once per frame
         void FixedUpdate()
         {
-            _transform.position = _startPosition + (Mathf.Sin(Time.realtimeSinceStartup / 2 * oscillationRate) + 1) * movementRange * movementDirection;
+            if (!_enabled) return;
+            
+            _transform.position = _startPosition + (-Mathf.Cos(_time * 2 * Mathf.PI * oscillationRate) + 1) * movementRange * movementDirection;
             _transform.rotation = Quaternion.AngleAxis(rotationSpeed * Time.fixedDeltaTime, rotationAxis) * _transform.rotation;
+            
+            _time += Time.fixedDeltaTime;
+            float oscillationPeriod = 1 / oscillationRate;
+            if (_time >= oscillationPeriod) _time -= oscillationPeriod;
+        }
+
+        public void Toggle()
+        {
+            _enabled = !_enabled;
+            OnStatusChanged?.Invoke(_enabled);
         }
     }
 

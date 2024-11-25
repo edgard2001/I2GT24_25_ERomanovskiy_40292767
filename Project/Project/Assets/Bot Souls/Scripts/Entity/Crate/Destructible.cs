@@ -5,19 +5,21 @@ using UnityEngine;
 public class Destructible : MonoBehaviour
 {
     [SerializeField] private GameObject model;
-    [SerializeField] private GameObject pieces;
+    [SerializeField] private GameObject[] pieces;
     
     [SerializeField] private float despawnDelay = 2;
     // Start is called before the first frame update
     void Start()
     {
         model.SetActive(true);
-        pieces.SetActive(false);
-        
+        foreach (GameObject piece in pieces)
+            piece.SetActive(false);
+
         GetComponent<Health>().Died += () =>
         {
             model.SetActive(false);
-            pieces.SetActive(true);
+            foreach (GameObject piece in pieces)
+                piece.SetActive(true);
             Invoke(nameof(Disappear), despawnDelay);
         };
     }
@@ -25,6 +27,10 @@ public class Destructible : MonoBehaviour
     // Update is called once per frame
     void Disappear()
     {
+        foreach (GameObject piece in pieces)
+        {
+            Destroy(piece);
+        }
         Destroy(gameObject);
     }
 }

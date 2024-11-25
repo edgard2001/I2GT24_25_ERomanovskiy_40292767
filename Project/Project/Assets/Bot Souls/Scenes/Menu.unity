@@ -195,6 +195,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1343773469393597403, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2528857404106062749, guid: f672bfe9432c42f458da818539d181f1, type: 3}
       propertyPath: m_Name
       value: Main Menu
@@ -206,6 +210,14 @@ PrefabInstance:
         Press \n\nAttack - Left Click / Right Trigger\nBlock - Right Click / Left
         Trigger\n\nToggle Upgrades Menu - Tab / Back Button\nNavigate Menu - WASD
         / Left Stick\nConfirm - Space / A Button\n\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950390945595259543, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950390945595259543, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8794729910073965719, guid: f672bfe9432c42f458da818539d181f1, type: 3}
       propertyPath: m_Pivot.x

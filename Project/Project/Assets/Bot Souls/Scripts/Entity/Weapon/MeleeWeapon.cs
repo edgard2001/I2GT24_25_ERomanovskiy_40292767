@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour
 {
-    [SerializeField] private string tagToDamage;
-    [SerializeField] private float damage = 10;
-    [SerializeField] private float parryWindow;
+    [SerializeField] protected string tagToDamage;
+    [SerializeField] protected float damage = 10;
+    [SerializeField] protected float parryWindow;
+    [SerializeField] protected bool canBlockThisWeaponsAttacks = true;
     public float ParryWindow => parryWindow;
     
     [SerializeField] private GameObject impactParticleEffect;
@@ -16,22 +17,24 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] private AudioClip blockSoundEffect;
     [SerializeField] private AudioClip parrySoundEffect;
     
-    [SerializeField] private LayerMask mask;
+    [SerializeField] protected LayerMask mask;
 
     public event Action OnAttackParried;
     public event Action OnEnemyKilled;
     
     private AudioSource _audioSource;
-    private Collider _collider;
-    private Transform _colliderTransform;
+    protected Collider _collider;
+    protected Transform _colliderTransform;
 
     private bool _attacking;
     
-    private List<Transform> _transformsHit;
-    [SerializeField] private int maxEnemiesHitCount = 3;
+    protected List<Transform> _transformsHit;
+    [SerializeField] protected int maxEnemiesHitCount = 3;
     
     [SerializeField] private UpgradesMenu upgradesMenu;
     [SerializeField] private AnimationCurve damagePerLevel;
+    
+    
     
     private void Awake()
     {
@@ -64,11 +67,13 @@ public class MeleeWeapon : MonoBehaviour
     {
         if (!_attacking) return;
         
-        TraceHit(0.15f, 1.25f);
+        TraceHit();
     }
 
-    private void TraceHit(float offset, float length)
+    protected virtual void TraceHit()
     {
+        float offset = 0.15f;
+        float length = 1.25f;
         Vector3 origin1 = _collider.bounds.center - _colliderTransform.up * offset;
         Vector3 origin2 = _collider.bounds.center - _colliderTransform.up * offset - _colliderTransform.forward * 0.2f;
         Vector3 origin3 = _collider.bounds.center - _colliderTransform.up * offset - _colliderTransform.forward * 0.1f;
@@ -114,10 +119,10 @@ public class MeleeWeapon : MonoBehaviour
         }
     }
 
-    private void DoDamage(Transform other, Health health, RaycastHit hit)
+    protected void DoDamage(Transform other, Health health, RaycastHit hit)
     {
         CharacterAttack characterAttack = other.GetComponentInChildren<CharacterAttack>();
-        if (characterAttack.AttemptParry())
+        if (canBlockThisWeaponsAttacks && characterAttack.AttemptParry())
         {
             OnAttackParried?.Invoke();
             _audioSource.PlayOneShot(parrySoundEffect);
@@ -134,13 +139,13 @@ public class MeleeWeapon : MonoBehaviour
         }
     }
     
-    private void HitCharacter(RaycastHit hit)
+    protected void HitCharacter(RaycastHit hit)
     {
         _audioSource.PlayOneShot(impactSoundEffect);
         Instantiate(impactParticleEffect, hit.point, Quaternion.LookRotation(hit.normal));
     }
 
-    private void HitBlock(RaycastHit hit)
+    protected void HitBlock(RaycastHit hit)
     {
         _audioSource.PlayOneShot(blockSoundEffect);
         Instantiate(blockParticleEffect, hit.point, Quaternion.LookRotation(hit.normal));

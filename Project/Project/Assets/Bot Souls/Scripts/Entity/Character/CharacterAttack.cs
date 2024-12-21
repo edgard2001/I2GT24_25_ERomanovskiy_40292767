@@ -7,7 +7,7 @@ public class CharacterAttack : MonoBehaviour
     [SerializeField] private float attackStaminaConsumption = 20;
     [SerializeField] private float blockStaminaConsumption = 30;
     
-    private MeleeWeapon _meleeWeapon;
+    private MeleeWeapon[] _meleeWeapons;
     
     private Animator _animator;
     private CharacterAnimation _animationController;
@@ -25,8 +25,9 @@ public class CharacterAttack : MonoBehaviour
     
     void Start()
     {
-        _meleeWeapon = GetComponentInChildren<MeleeWeapon>();
-        _meleeWeapon.OnAttackParried += EnterStun;
+        _meleeWeapons = GetComponentsInChildren<MeleeWeapon>();
+        foreach (MeleeWeapon meleeWeapon in _meleeWeapons)
+            meleeWeapon.OnAttackParried += EnterStun;
         
         _animator = GetComponent<Animator>();
         _animationController = GetComponent<CharacterAnimation>();
@@ -118,12 +119,14 @@ public class CharacterAttack : MonoBehaviour
     {
         _attackQueued = false;
         _canQueueAttack = true;
-        _meleeWeapon.StartAttack();
+        foreach (MeleeWeapon meleeWeapon in _meleeWeapons)
+            meleeWeapon.StartAttack();
     }
     
     private void EndDamage()
     {
-        _meleeWeapon.EndAttack();
+        foreach (MeleeWeapon meleeWeapon in _meleeWeapons)
+            meleeWeapon.EndAttack();
     }
     
     private void EndAttack()
@@ -150,7 +153,7 @@ public class CharacterAttack : MonoBehaviour
 
     public bool AttemptParry()
     {
-        return _blocking && _blockingTime < _meleeWeapon.ParryWindow;
+        return _blocking && _blockingTime < _meleeWeapons[0].ParryWindow;
     }
 
     private void EnterStun()

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3272347762041447814}
   - component: {fileID: 1552195644391987488}
   - component: {fileID: 1119574833600828910}
+  - component: {fileID: 5614319272343530052}
   m_Layer: 6
   m_Name: Destructible Crate
   m_TagString: Environment
@@ -76,7 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f8b2a5a072487418ae846f146f2592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentPrefabs:
+  hitComponentPrefabs:
+  - {fileID: 7686227415005114161, guid: d08cfec969439c246b239abb47fe2c7b, type: 3}
+  deathComponentPrefabs:
   - {fileID: 7686227415005114161, guid: d08cfec969439c246b239abb47fe2c7b, type: 3}
   - {fileID: 4001892036532565296, guid: 1cbe065277bbc7546aac6c25548ed19b, type: 3}
   ejectForce: 10
@@ -101,6 +104,13 @@ MonoBehaviour:
   damageIndicatorBar: {fileID: 0}
   entityUI: {fileID: 0}
   damageIndicatorCatchupTimeMax: 2
+  upgradesMenu: {fileID: 0}
+  healthPerLevel:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!54 &1119574833600828910
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,6 +138,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!208 &5614319272343530052
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130791126232316208}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &487054569310057258
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class ComponentSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] componentPrefabs;
+    [SerializeField] private GameObject[] hitComponentPrefabs;
+    [SerializeField] private GameObject[] deathComponentPrefabs;
     [SerializeField] private float ejectForce = 4f;
     
     // Start is called before the first frame update
     void Start()
     {
         Health health = GetComponent<Health>();
-        health.Died += () => SpawnComponents(Random.Range(4,7));
-        health.Damaged += () => SpawnComponents(1);
+        health.Died += () => SpawnComponents(deathComponentPrefabs, Random.Range(4,7));
+        health.Damaged += () => SpawnComponents(hitComponentPrefabs, 1);
     }
 
     // Update is called once per frame
-    void SpawnComponents(int count)
+    void SpawnComponents(GameObject[] componentPrefabs, int count)
     {
         for (int i = 0; i < count; i++)
         {

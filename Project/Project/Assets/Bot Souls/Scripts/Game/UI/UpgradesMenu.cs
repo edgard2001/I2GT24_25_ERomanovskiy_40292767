@@ -24,9 +24,9 @@ public class UpgradesMenu : MonoBehaviour
     [SerializeField] private TMP_Text staminaCostText;
     [SerializeField] private TMP_Text damageCostText;
     
-    private int _healthCost = 10;
-    private int _staminaCost = 10;
-    private int _damageCost = 10;
+    private int _healthCost = 50;
+    private int _staminaCost = 50;
+    private int _damageCost = 50;
 
     [SerializeField] private int healthLevelMax = 100;
     [SerializeField] private int staminaLevelMax = 100;

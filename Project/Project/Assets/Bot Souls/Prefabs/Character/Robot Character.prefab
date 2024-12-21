@@ -2405,7 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackStaminaConsumption: 15
-  blockStaminaConsumption: 30
+  blockStaminaConsumption: 20
   Stunned: 0
   _blockingTime: 0
 --- !u!114 &6478785490310993951
@@ -2429,6 +2429,13 @@ MonoBehaviour:
   damageIndicatorBar: {fileID: 0}
   entityUI: {fileID: 0}
   damageIndicatorCatchupTimeMax: 1
+  upgradesMenu: {fileID: 0}
+  healthPerLevel:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &7167875307443773428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2448,6 +2455,13 @@ MonoBehaviour:
   staminaBar: {fileID: 0}
   consumptionIndicatorBar: {fileID: 0}
   consumptionIndicatorCatchupTimeMax: 1
+  upgradesMenu: {fileID: 0}
+  staminaPerLevel:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7735065503087401022
 GameObject:
   m_ObjectHideFlags: 0

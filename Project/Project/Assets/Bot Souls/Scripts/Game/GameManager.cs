@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     
     private Checkpoint _checkpoint;
     private Vector3 _checkpointPosition;
-    private int _currentGameplayScene;
+    public Vector3 CheckpointPosition => _checkpointPosition;
 
     void Awake()
     {
@@ -22,14 +22,11 @@ public class GameManager : MonoBehaviour
         else 
         {
             _instance = this;
-            SceneManager.sceneLoaded += OnSceneLoaded;
             DontDestroyOnLoad(gameObject);
         }
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
-        _currentGameplayScene = 1;
     }
 
     private void Start()
@@ -37,16 +34,15 @@ public class GameManager : MonoBehaviour
         _musicManager = MusicManager.Instance;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        GameObject player = GameObject.Find("Player");
-        if (player != null) player.transform.position = _checkpointPosition;
-        _checkpoint = null;
-    }
-
     public void RestartLevel()
     {
-        SceneManager.LoadScene(_currentGameplayScene);
+        SceneManager.LoadScene(1);
+        _musicManager.PlayMusic(MusicManager.MusicType.Ambient, 0);
+    }
+    
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
         _musicManager.PlayMusic(MusicManager.MusicType.Ambient, 0);
     }
     
@@ -57,10 +53,5 @@ public class GameManager : MonoBehaviour
         
         _checkpoint = checkpoint;
         _checkpointPosition = checkpoint.transform.position;
-    }
-    
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

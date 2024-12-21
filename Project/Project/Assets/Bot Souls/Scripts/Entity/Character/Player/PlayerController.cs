@@ -10,8 +10,11 @@ namespace Player
         [SerializeField] private float sprintMultiplier = 2f;
         [SerializeField] private float jumpForceMultiplier = 40000;
         [SerializeField] private float gravityMultiplier = 10;
+        [SerializeField] private float dashForceMultiplier = 20000f;
+        
         [SerializeField] private float sprintStaminaConsumption = 10;
-        [SerializeField] private float jumpStaminaConsumption = 30;
+        [SerializeField] private float jumpStaminaConsumption = 20;
+        [SerializeField] private float dashStaminaConsumption = 30;
         
         [Header("Input")] [SerializeField] private float controllerStickDeadZone = 0.2f;
 
@@ -25,6 +28,7 @@ namespace Player
         private bool _prevBlockingInput;
 
         private float _speed;
+        private float _sprintTime;
 
         private bool _sprinting;
         private bool _grounded;
@@ -56,7 +60,7 @@ namespace Player
             {
                 _dead = true;
                 _rigidbody.excludeLayers = LayerMask.GetMask("Player", "Enemy");
-                Invoke(nameof(Death), 5);
+                Invoke(nameof(Death), 2);
             };
 
             _stamina = GetComponentInChildren<Stamina>();
@@ -67,6 +71,9 @@ namespace Player
             _upgradesMenu = GetComponentInChildren<UpgradesMenu>();
             
             Physics.gravity = Vector3.down * (9.81f * gravityMultiplier);
+            
+            Vector3 position = _gameManager.CheckpointPosition;
+            if (position != Vector3.zero) transform.position = position;
         }
 
         private void Update()
@@ -96,6 +103,7 @@ namespace Player
             
             if (_grounded)
                 _speed = inputVector.magnitude * maxSpeed * (_sprinting ? sprintMultiplier : 1);
+                
             CalculateMovementDirection(inputVector);
 
             if (_upgradesMenu.InMenu)
@@ -132,6 +140,20 @@ namespace Player
 
             _prevBlockingInput = blocking;
 
+           
+            if (Input.GetButtonUp("Sprint"))
+            {
+                if (_sprintTime < 0.2f && _stamina.UseStamina(dashStaminaConsumption))
+                {
+                    _rigidbody.AddForce(_direction * dashForceMultiplier, ForceMode.Impulse);
+                }
+                _sprintTime = 0;
+            }
+            else if (Input.GetButton("Sprint"))
+            {
+                _sprintTime += Time.deltaTime;
+            }
+            
             if (_stamina.StaminaPercentage > 0)
             {
                 _sprinting = Input.GetButton("Sprint");

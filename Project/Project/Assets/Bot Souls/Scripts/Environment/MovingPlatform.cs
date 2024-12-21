@@ -16,7 +16,7 @@ namespace Environment.Platform
         
         private Transform _transform;
         private Vector3 _startPosition;
-        private bool _enabled;
+        [SerializeField]  private bool enabled;
         private float _time;
         
         public event Action<bool> OnStatusChanged; 
@@ -30,9 +30,9 @@ namespace Environment.Platform
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (!_enabled) return;
+            if (!enabled) return;
             
-            _transform.position = _startPosition + (-Mathf.Cos(_time * 2 * Mathf.PI * oscillationRate) + 1) * movementRange * movementDirection;
+            _transform.position = _startPosition + (-Mathf.Cos(_time * 2 * Mathf.PI * oscillationRate) + 1) / 2 * movementRange * movementDirection;
             _transform.rotation = Quaternion.AngleAxis(rotationSpeed * Time.fixedDeltaTime, rotationAxis) * _transform.rotation;
             
             _time += Time.fixedDeltaTime;
@@ -42,8 +42,8 @@ namespace Environment.Platform
 
         public void Toggle()
         {
-            _enabled = !_enabled;
-            OnStatusChanged?.Invoke(_enabled);
+            enabled = !enabled;
+            OnStatusChanged?.Invoke(enabled);
         }
     }
 

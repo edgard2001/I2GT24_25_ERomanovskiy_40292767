@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 1.5, z: 0}
-  cameraChaseSpeed: 10
+  cameraChaseSpeed: 1000
   minDistance: 0.5
   maxDistance: 2.7
   sphereCheckRadius: 0.15
@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 312070045294720056}
   - component: {fileID: 2325059685569321021}
   - component: {fileID: 6668844680449631607}
+  - component: {fileID: 484383277365094410}
   m_Layer: 3
   m_Name: Camera
   m_TagString: MainCamera
@@ -179,3 +180,12 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7463867241242118765}
   m_Enabled: 1
+--- !u!45 &484383277365094410
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463867241242118765}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: c4fc00faa00df8f4598e60c8fb1bdc7a, type: 2}

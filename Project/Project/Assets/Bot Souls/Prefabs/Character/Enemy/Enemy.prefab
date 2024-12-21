@@ -99,11 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
+  chaseRange: 10
   attackRange: 1.5
   attackDelay: 2
-  mask:
+  obstacleAvoidanceMask:
     serializedVersion: 2
-    m_Bits: 4609
+    m_Bits: 4673
+  playerInSightMask:
+    serializedVersion: 2
+    m_Bits: 513
 --- !u!1001 &5458387790184262756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +303,10 @@ PrefabInstance:
       propertyPath: objectTransform
       value: 
       objectReference: {fileID: 8976618331649182063}
+    - target: {fileID: 762382092755947036, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 988444537528732498, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -584,6 +592,10 @@ PrefabInstance:
       value: 1089
       objectReference: {fileID: 0}
     - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
+      propertyPath: parryWindow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297258046626012945, guid: b2a971f41e352504a93373dd1bc6e405, type: 3}
       propertyPath: tagToDamage
       value: Player
       objectReference: {fileID: 0}
@@ -644,7 +656,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f8b2a5a072487418ae846f146f2592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentPrefabs:
+  hitComponentPrefabs:
+  - {fileID: 7686227415005114161, guid: d08cfec969439c246b239abb47fe2c7b, type: 3}
+  deathComponentPrefabs:
   - {fileID: 7686227415005114161, guid: d08cfec969439c246b239abb47fe2c7b, type: 3}
   - {fileID: 4001892036532565296, guid: 1cbe065277bbc7546aac6c25548ed19b, type: 3}
   ejectForce: 4

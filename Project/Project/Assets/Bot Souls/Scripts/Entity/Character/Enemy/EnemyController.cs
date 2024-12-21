@@ -20,17 +20,17 @@ public class EnemyController : MonoBehaviour
 
     private bool _dead;
     private bool _moving;
-    private bool _blocked;
-    private Collider _collider;
 
+    [SerializeField] private float chaseRange = 10;
     [SerializeField] private float attackRange = 2;
     [SerializeField] private float attackDelay = 2;
 
     private bool _attacking;
     private float _attackCooldown;
 
-    [SerializeField] private LayerMask mask;
-
+    [SerializeField] private LayerMask obstacleAvoidanceMask;
+    [SerializeField] private LayerMask playerInSightMask;
+    
     void Start()
     {
         _health = GetComponentInChildren<Health>();
@@ -56,13 +56,22 @@ public class EnemyController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;
         _playerTransform = GameObject.Find("Player").transform;
-
-        _collider = GetComponent<Collider>();
     }
 
     private void Update()
     {
         if (_dead) return;
+
+        bool playerInSight = Physics.Raycast(_transform.position + transform.up,
+            _playerTransform.position - transform.position, out RaycastHit hit,
+            chaseRange, playerInSightMask);
+        //Debug.DrawLine(_transform.position + transform.up, hit.point, Color.red);
+        if (!playerInSight || !hit.collider.CompareTag("Player"))
+        {
+            _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, 4f * Time.deltaTime));
+            _moving = false;
+            return;
+        }
 
         Vector3 playerPositionFlattened = _playerTransform.position;
         playerPositionFlattened.y = 0;
@@ -72,23 +81,31 @@ public class EnemyController : MonoBehaviour
 
         _playerDirection = (playerPositionFlattened - positionFlattened).normalized;
         _turnSpeed = Mathf.Lerp(360, 120, (Vector3.Dot(_transform.forward, _playerDirection) + 1) / 2);
-        _speed = Mathf.Lerp(0, maxSpeed, (Vector3.Dot(_transform.forward, _playerDirection) + 1) / 2);
+        _speed = Mathf.Lerp(maxSpeed/2, maxSpeed, (Vector3.Dot(_transform.forward, _playerDirection) + 1) / 2);
         
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(_playerDirection),
             _turnSpeed * Time.deltaTime);
 
-        if (_attackCooldown > 0) _attackCooldown -= Time.deltaTime;
-
-        if ((_playerTransform.position - _transform.position).sqrMagnitude < attackRange * attackRange)
+        float sqrDistance = (_playerTransform.position - _transform.position).sqrMagnitude;
+        if (sqrDistance > chaseRange * chaseRange)
         {
             _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, 4f * Time.deltaTime));
+            _moving = false;
+            return;
+        }
             
-            if (_attackCooldown <= 0 && _stamina.StaminaPercentage > 0.5)
+        if (sqrDistance < attackRange * attackRange)
+        {
+            if (_attackCooldown > 0) _attackCooldown -= Time.deltaTime;
+            
+            _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, 4f * Time.deltaTime));
+            
+            if (_attackCooldown <= 0 && _stamina.StaminaPercentage > 0.25)
             {
                 _attackBehaviour.Attack();
                 _attackCooldown = attackDelay;
             }
-            else
+            else if (_attackCooldown <= attackDelay / 2)
             {
                 if (_stamina.StaminaPercentage > 0.5)
                     _attackBehaviour.Block();
@@ -101,21 +118,31 @@ public class EnemyController : MonoBehaviour
         {
             _attackBehaviour.UnBlock();
             _moving = true;
-        }
 
-        _blocked = false;
-        _blocked |= Physics.Raycast(transform.position + transform.up, transform.forward, 1, mask);
-        _blocked |= Physics.Raycast(transform.position + transform.up, transform.forward + transform.right, 0.6f, mask);
-        _blocked |= Physics.Raycast(transform.position + transform.up, transform.forward - transform.right, 0.6f, mask);
-        if (_blocked) _animator.SetFloat("Speed", Mathf.Lerp(_animator.GetFloat("Speed"), 0, 4f * Time.deltaTime));
-        else _animator.SetFloat("Speed", _playerDirection.magnitude * _speed / 6);
+            Vector3 repelDirection = Vector3.zero;
+            Collider[] colliders = Physics.OverlapSphere(_transform.position, 1, obstacleAvoidanceMask);
+            foreach (Collider collider in colliders)
+            {
+                if ((collider.transform.position - _transform.position).y < 0) continue;
+                Debug.DrawLine(_transform.position + Vector3.up, collider.ClosestPoint(_transform.position + Vector3.up), Color.red);
+                repelDirection += (_transform.position + Vector3.up - collider.ClosestPoint(_transform.position + Vector3.up)).normalized;
+            }
+
+            if (repelDirection != Vector3.zero)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(repelDirection),
+                    360 * Time.deltaTime);
+            }
+        }
+        
+        if (_moving) _animator.SetFloat("Speed", _playerDirection.magnitude * _speed / 6);
     }
 
     private void FixedUpdate()
     {
         Vector3 velocity = transform.forward *
                            (!_moving || _attackBehaviour.Stunned || _dead || _attackBehaviour.IsAttacking() 
-                            || _blocked || _attackBehaviour.IsBlocking() ? 0 : _speed);
+                             || _attackBehaviour.IsBlocking() ? 0 : _speed);
         _rigidbody.velocity = new Vector3(velocity.x, _rigidbody.velocity.y, velocity.z);
     }
 

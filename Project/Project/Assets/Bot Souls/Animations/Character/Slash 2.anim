@@ -59853,7 +59853,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.7666667
+  - time: 1.1333333
     functionName: OnEndMeleeAttack
     data: 
     objectReferenceParameter: {fileID: 0}

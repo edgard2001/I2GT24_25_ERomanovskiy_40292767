@@ -195,6 +195,72 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 634087482237957628, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_text
+      value: 'Current Features
+
+        --------------------------
+
+
+        Camera
+        Follow
+
+        Run, Sprint, Jump, Dash
+
+
+        Health
+
+        Stamina
+
+
+        Melee
+        Attack
+
+        Block, Block Break, Parry, Stun
+
+
+        Collectibles
+
+        Breakable
+        Crates
+
+
+        Moving Platforms
+
+        Activation Buttons
+
+
+        Checkpoints
+
+        Upgrades
+
+
+        Enemy
+        Obstacle Avoidance
+
+        Boss Battle
+
+
+        Music
+
+        Sound Effects
+
+        Particle
+        Effects
+
+
+        Xbox Controller Support
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 634087482237957628, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 634087482237957628, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1343773469393597403, guid: f672bfe9432c42f458da818539d181f1, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
@@ -203,13 +269,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 2555336661052185849, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555336661052185849, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5203059376576387644, guid: f672bfe9432c42f458da818539d181f1, type: 3}
       propertyPath: m_text
       value: "Controls\n--------------\n\nMove - WASD / Left Stick \nLook - Mouse
         / Right  Stick\n\nJump - Space / A Button\nSprint - Left Shift / Left Stick
-        Press \n\nAttack - Left Click / Right Trigger\nBlock - Right Click / Left
-        Trigger\n\nToggle Upgrades Menu - Tab / Back Button\nNavigate Menu - WASD
-        / Left Stick\nConfirm - Space / A Button\n\n\n"
+        Button (Hold)\nDash - Left Shift / Left Stick Button (Tap)\n\nAttack - Left
+        Click / Right Trigger\nBlock - Right Click / Left Trigger\n\nToggle Upgrades
+        Menu - Tab / Back Button\nNavigate Menu - WASD / Left Stick\nConfirm - Space
+        / A Button\n\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203059376576387644, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203059376576387644, guid: f672bfe9432c42f458da818539d181f1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7950390945595259543, guid: f672bfe9432c42f458da818539d181f1, type: 3}
       propertyPath: m_SizeDelta.y
